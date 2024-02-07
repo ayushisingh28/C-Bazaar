@@ -52,6 +52,7 @@ body {
   margin-right: 5%;
 }
 
+
 @media only screen and (max-width:992px) {
   .wid-25, .wid-50, .wid-75, .wid-33{
     width: 100%;

@@ -21,25 +21,28 @@
     <div class="wrapper">
       <div class="header">
         <div class="logo arrange-left wid-25">
-          <h1><span>C</span><span> Bazaar </span></h1>
+          <h1><span><a href="index.html" style="text-decoration: none;">C</span><span>Bazaar</span></a> </h1>
         </div>
-        <div class="search-product arrange-left wid-50">
+        <!-- <div class="search-product arrange-left wid-50">
           <input type="text" placeholder="Search for Products" />
           <button>
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
-        </div>
+        </div> -->
+        <div class="search-product arrange-left wid-50">
+          <input type="text" id="searchInput" placeholder="Search for Products" onkeyup="searchProducts()">
+          <button><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
         <div class="selected-product arrange-left wid-25">
           <button class="common-btn">
             <span>
               <i class="fa-solid fa-cart-arrow-down"></i>
-              0</span
-            >
+              </span>
           </button>
           <button class="common-btn">
             <span>
               <i class="fa-solid fa-heart"></i>
-              0</span
+              </span>
             >
           </button>
         </div>
@@ -68,19 +71,20 @@
         <div class="wid-75 arrange-left">
           <div class="shop-menu">
             <ul class="left-menu-list">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Shop</a></li>
-              <li class="dropdown-head">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="shop.html">Shop</a></li>
+              <li><a href="cart.html">Cart</a></li>
+              <!-- <li class="dropdown-head">
                 <a href="#"
                   >Product Details
                   <i class="fa-solid fa-angle-down"></i>
                 </a>
                 <ul class="dropdown">
-                  <li><a href="#">Cart</a></li>
+                  <li><a href="cart.html">Cart</a></li>
                   <li><a href="#">Checkout</a></li>
                 </ul>
-              </li>
-              <li><a href="#">Contact</a></li>
+              </li> -->
+              <li><a href="contact.html">Contact</a></li>
             </ul>
             <ul class="right-menu-list">
               <li><a href="#">Login</a></li>
@@ -88,7 +92,7 @@
             </ul>
           </div>
           <div class="banner">
-            <img src="./home.jpg" alt="banner" />
+            <img src="src/home.jpg" alt="banner" />
             <div class="banner-text">
               <h4>10% off Your First Order</h4>
               <h3>College Bazaar </h3>
@@ -136,7 +140,7 @@
           <div class="category-item">
             <div class="product-count">20 Products</div>
             <div class="category-img">
-              <img src="./EE.jfif" />
+              <img src="src/EE.jfif" />
             </div>
             <div class="category-type">
               <h5>Books</h5>
@@ -146,8 +150,8 @@
         <div class="wid-33 arrange-left">
           <div class="category-item">
             <div class="product-count">80 Products</div>
-            <div class="category-img">
-              <img src="./electro notes.jfif" />
+            <div class="category-img" >
+              <img src="src/electro notes.jfif" />
             </div>
             <div class="category-type">
               <h5>Notes</h5>
@@ -158,7 +162,7 @@
           <div class="category-item">
             <div class="product-count">40 Products</div>
             <div class="category-img">
-              <img src="./mini table.jpg" />
+              <img src="src/mini table.jpg" />
             </div>
             <div class="category-type">
               <h5>Other Products</h5>
@@ -192,7 +196,7 @@
         <div class="wid-25 arrange-left">
           <div class="cart">
             <div>
-              <img src="./alarm clock.jpg" alt="" />
+              <img src="src/alarm clock.jpg" alt="" />
             </div>
             <div class="cart-details">
               <h6 class="name-head">Alarm Clock</h6>
@@ -216,7 +220,7 @@
         <div class="wid-25 arrange-left">
           <div class="cart">
             <div>
-              <img src="./mattress.jpg" alt="" />
+              <img src="src/mattress.jpg" alt="" />
             </div>
             <div class="cart-details">
               <h6 class="name-head">Mattress</h6>
@@ -240,7 +244,7 @@
         <div class="wid-25 arrange-left">
           <div class="cart">
             <div>
-              <img src="./table lamp.jpg" alt="" />
+              <img src="src/table lamp.jpg" alt="" />
             </div>
             <div class="cart-details">
               <h6 class="name-head">Table Lamp</h6>
@@ -264,7 +268,7 @@
         <div class="wid-25 arrange-left">
           <div class="cart">
             <div>
-              <img src="./bicycle-g046cc0c16_1920.jpg" alt="" />
+              <img src="src/bicycle-g046cc0c16_1920.jpg" alt="" />
             </div>
             <div class="cart-details">
               <h6 class="name-head">Bicycle</h6>
@@ -368,5 +372,57 @@
       </div>
       
     </div>
+
+    <script>
+      function searchProducts() {
+          var input, filter, ul, li, product, i, txtValue;
+          input = document.getElementById('searchInput');
+          filter = input.value.toUpperCase();
+          ul = document.getElementById("productList");
+          li = ul.getElementsByTagName('li');
+
+          for (i = 0; i < li.length; i++) {
+              product = li[i];
+              txtValue = product.dataset.category.toUpperCase();
+              if (txtValue.indexOf(filter) > -1) {
+                  product.style.display = "";
+              } else {
+                  product.style.display = "none";
+              }
+          }
+      }
+
+      function sortProducts() {
+          var ul, li, products;
+          ul = document.getElementById("productList");
+          li = ul.getElementsByTagName('li');
+          products = Array.prototype.slice.call(li);
+
+          products.sort(function(a, b) {
+              var categoryA = a.dataset.category.toUpperCase();
+              var categoryB = b.dataset.category.toUpperCase();
+              if (categoryA < categoryB) {
+                  return -1;
+              }
+              if (categoryA > categoryB) {
+                  return 1;
+              }
+              return 0;
+          });
+
+          // Remove existing list items
+          while (ul.firstChild) {
+              ul.removeChild(ul.firstChild);
+          }
+
+          // Append sorted list items
+          for (var i = 0; i < products.length; i++) {
+              ul.appendChild(products[i]);
+          }
+      }
+
+      // Call the sortProducts function when the page loads
+      window.onload = sortProducts;
+  </script>
   </body>
 </html>

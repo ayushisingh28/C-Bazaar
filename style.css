@@ -604,6 +604,54 @@
     justify-content: start;
     flex-wrap: wrap;
   }
+  /* Contact form styles */
+.contact-info {
+  margin-bottom: 20px;
+}
+.contact-info h3 {
+  margin-bottom: 10px;
+}
+.contact-info ul {
+  list-style-type: none;
+  padding: 0;
+}
+.contact-info ul li {
+  margin-bottom: 5px;
+}
+
+.contact-form {
+  margin-bottom: 20px;
+}
+.contact-form h3 {
+  margin-bottom: 10px;
+}
+.contact-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.contact-form textarea {
+  height: 100px;
+}
+.contact-form button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #d19c97;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.contact-form button[type="submit"]:hover {
+  background-color: #b57c7a;
+}
   .footer {
     display: block;
   }
